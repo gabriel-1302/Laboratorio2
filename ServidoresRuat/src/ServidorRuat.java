@@ -12,7 +12,7 @@ public class ServidorRuat
         try {
             LocateRegistry.createRegistry(1099); 
             RegistroDeuda ruat = new RegistroDeuda();
-            Naming.rebind("//localhost/RuatService", (Remote) ruat);
+            Naming.rebind("//localhost/RuatService", ruat);
             System.out.println("Servidor RUAT está listo.");
         } catch (Exception e) {
             e.printStackTrace();

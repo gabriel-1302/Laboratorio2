@@ -8,6 +8,6 @@
  * @author Cuboz
  */
 public enum Impuesto {
-    vehiculo,inmueble;
+    VEHICULO,INMUEBLE,
 
 }

@@ -55,13 +55,13 @@ public class ServidorBanco {
     }
     
     
-    public static String procesarPeticion(String peticion){
+    public static String procesarPeticion(String peticion) throws MalformedURLException, RemoteException{
         IRegistroDeuda ruat;
         String enviar[] = peticion.split(":");
         String ci = enviar[1];
         String respuesta="";
         try {
-            ruat = (IRegistroDeuda) Naming.lookup("rmi://localhost/Ruat");
+            ruat = (IRegistroDeuda) Naming.lookup("rmi://172.25.95.180/Ruat");
         if(enviar[0].equals("Deuda")){
             List<Deuda> deudas_list = ruat.buscar(ci);
             for(Deuda deudas : deudas_list){
@@ -70,7 +70,7 @@ public class ServidorBanco {
             respuesta = respuesta.substring(0, respuesta.length() - 1);
             return "deudas:"+respuesta;
         }
-        else if(enviar[0].equals("Pagar"){
+        else if(enviar[0].equals("Pagar")){
             String[] valores=enviar[1].split(",");
             Deuda deuda=new Deuda(valores[0],Integer.valueOf(valores[1]),Impuesto.valueOf(valores[2]),Double.valueOf(valores[3]));
             if (ruat.pagar(deuda)) {
@@ -83,6 +83,7 @@ public class ServidorBanco {
         } catch (NotBoundException ex) {
             Logger.getLogger(ServidorBanco.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return respuesta;
         
     }
 
