@@ -8,6 +8,7 @@ import java.util.List;
 
 
 
+
 public class RegistroDeuda extends UnicastRemoteObject implements IRegistroDeuda {
     private List<Deuda> deudas;
 
@@ -39,7 +40,7 @@ public class RegistroDeuda extends UnicastRemoteObject implements IRegistroDeuda
                 result.add(deuda);
             }
         }
-        return (ArrayList<Deuda>) result.toArray(new Deuda[0]);
+        return (ArrayList<Deuda>) result;
     }
 
 

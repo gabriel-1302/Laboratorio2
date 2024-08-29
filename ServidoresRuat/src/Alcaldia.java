@@ -30,7 +30,7 @@ public class Alcaldia {
                 System.out.println("Desde el puerto remoto: " + receivedPacket.getPort());
 
                 String receivedData = new String(receivedPacket.getData());
-                int CI = Integer.parseInt(receivedData.trim());
+                String CI = receivedData.trim();
                 System.out.println("CI consultado: " + CI);
 
                 boolean hasObservations = hasObservations(CI);
@@ -44,7 +44,7 @@ public class Alcaldia {
         }
     }
 
-    public static boolean hasObservations(int CI) {
-        return CI == 1234567;
+    public static boolean hasObservations(String CI) {
+        return CI.equals("1234567");
     }
 }
